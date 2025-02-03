@@ -1,0 +1,6 @@
+Faça uma função em Haskell que mostre a temperatura em graus Fahrenheit a partir de uma temperatura em graus Celsius.
+Faça uma função que recebe um número e retorne verdadeiro se o número for par.
+Faça uma função que receba uma lista de números e retorne o maior.
+Faça uma função que recebe um número e uma lista de números e retorna uma lista com os números que são maiores do que o valor informado.
+Faça uma função que recebe uma lista e retorna uma nova lista contendo a duplicação dos elementos da lista original. Ex: duplica [1,2,3] => [1,1,2,2,3,3]
+Faça uma função que retorne true se um número é primo. (Para 0 < n < 100).
