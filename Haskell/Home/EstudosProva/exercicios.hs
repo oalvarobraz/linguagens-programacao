@@ -136,3 +136,13 @@ media list = media_aux (length list) list
         med :: [Double] -> Int -> Double
         med (h:_) 0 = h
         med (_:t) n = med t (n-1)
+
+-- Escreva uma função que recebe uma lista de números e retorna uma lista de tuplas, onde cada tupla contém o número e o seu quadrado
+retornaTuplas :: (Eq a, Num a) => [a] -> [(a, a)]
+retornaTuplas [] = []
+retornaTuplas (h:t) = (h, h * h) : retornaTuplas t
+
+-- Escreva uma função que recebe uma lista de números e retorna a média dos elementos
+mediaList :: (Eq a, Num a) => [a] -> Double
+mediaList [] = 0
+mediaList (h:t) = (h + mediaList t) / length (h:t)
