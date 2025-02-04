@@ -103,7 +103,7 @@ sumNatural n
 invertList :: [a] -> [a]
 invertList [] = error "Lista vazia"
 invertList [x] = [x]
-invertList (h:t) = [h] -- realmente não sei
+invertList (h:t) = invertList t ++ [h]
 
 -- Crie uma função recursiva que verifica se um elemento está presente em uma lista
 contemList :: Eq a => [a] -> a -> Bool
@@ -111,3 +111,28 @@ contemList [] _ = False
 contemList (h:t) v
     | h == v = True 
     | otherwise = contemList t v
+
+-- retornar penultimo elemento da lista
+penultimoList :: Eq a => [a] -> a
+penultimoList [] = error "Lista vazia: não há último elemento."
+penultimoList [x] = error "Lista tem somente um elemento."
+penultimoList (h:t)
+    | proximoElement t == [] = h
+    | otherwise = penultimoList t
+    where
+        proximoElement (h:t) = t
+penultimo [a,b] = a
+penultimo (h:t) = penultimo t
+
+-- Descobrir o numero que está no meio da lista
+media :: [Double] -> Double
+media [a] = a
+media list = media_aux (length list) list
+    where
+        media_aux tam list
+            | mod tam 2 == 0 = (med list (div tam 2 - 1) + med list (div tam 2)) / 2
+            | otherwise = med list (div tam 2)
+        
+        med :: [Double] -> Int -> Double
+        med (h:_) 0 = h
+        med (_:t) n = med t (n-1)

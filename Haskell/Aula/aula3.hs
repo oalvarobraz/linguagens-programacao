@@ -10,7 +10,7 @@ maximo3valores2 x y z
     | otherwise = z
 
 fact :: (Num a, Enum a) => a -> a
-fact n = product[1 .. n]
+fact n = product [1 .. n]
 
 mysum :: Num a => [a] -> a
 mysum [] = 0
@@ -34,4 +34,15 @@ penultimoList (h:t)
 penultimo [a,b] = a
 penultimo (h:t) = penultimo t
 
--- Descobrir o ponto medio da lista
+-- Descobrir o numero que está no meio da lista
+media :: [Double] -> Double
+media [a] = a
+media list = media_aux (length list) list
+    where
+        media_aux tam list
+            | mod tam 2 == 0 = (med list (div tam 2 - 1) + med list (div tam 2)) / 2
+            | otherwise = med list (div tam 2)
+        
+        med :: [Double] -> Int -> Double
+        med (h:_) 0 = h
+        med (_:t) n = med t (n-1)
