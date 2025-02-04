@@ -1,4 +1,3 @@
-import Text.XHtml (base, abbr, caption)
 -- if-then-else
 
 maior1 :: Int -> Int -> Int

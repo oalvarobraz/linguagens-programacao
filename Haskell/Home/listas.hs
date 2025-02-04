@@ -1,8 +1,4 @@
 -- Listas
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-{-# HLINT ignore "Use foldr" #-}
-{-# HLINT ignore "Use map" #-}
-{-# HLINT ignore "Use camelCase" #-}
 
 listals = [[1,2],[3,4],[5,6]]
 ls1 = [1.. 10]
