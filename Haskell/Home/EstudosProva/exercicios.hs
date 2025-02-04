@@ -12,7 +12,7 @@ ehpar x = mod x 2 == 0
 
 -- Escreva uma função recursiva que calcula o fatorial de um número
 fatorial :: Int -> Int
-fatorial x 
+fatorial x
     | x == 0 = 1
     | otherwise = x * fatorial (x-1)
 
@@ -72,3 +72,42 @@ maiorTupla (a, b, c)
     | a >= b && a >= c = a
     | b >= a && b >= c = b
     | otherwise = c
+
+-- Crie uma função que verifica se um número é múltiplo de 3
+multiplode3 :: Int -> Bool
+multiplode3 x = mod x 3 == 0
+
+-- Crie uma função que recebe uma lista e retorna o último elemento
+ultimoList :: [a] -> a
+ultimoList [] = error "Lista vazia: não há último elemento."
+ultimoList [x] = x
+ultimoList (_:t) = ultimoList t
+
+-- Crie uma função que recebe uma lista e retorna a lista sem o último elemento
+removLastList :: [a] -> [a]
+removLastList [] = error "Lista vazia: não há último elemento."
+removLastList [x] = []
+removLastList (h:t) = h : removLastList t
+
+-- Crie uma função que verifica se uma lista está vazia
+listempty :: [a] -> Bool
+listempty list = if null list then True else False
+
+-- Crie uma função que calcula a soma dos primeiros n números naturais
+sumNatural :: Int -> Int
+sumNatural n
+    | n == 0 = 0
+    | otherwise = n + sumNatural (n-1)
+
+-- Crie uma função que inverte uma lista
+invertList :: [a] -> [a]
+invertList [] = error "Lista vazia"
+invertList [x] = [x]
+invertList (h:t) = [h] -- realmente não sei
+
+-- Crie uma função recursiva que verifica se um elemento está presente em uma lista
+contemList :: Eq a => [a] -> a -> Bool
+contemList [] _ = False
+contemList (h:t) v
+    | h == v = True 
+    | otherwise = contemList t v
