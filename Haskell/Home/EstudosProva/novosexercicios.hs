@@ -42,9 +42,15 @@ somaquadradospares (h:t)
     | mod h 2 == 0 = h*h + somaquadradospares t
     | otherwise = somaquadradospares t
 
--- Escreva uma função que recebe uma lista de números e retorna uma lista com os números que são palíndromos (números que são iguais quando lidos de trás para frente)
-numerosPalindromos [] = 0
-numerosPalindromos (h:t) = 0 -- sei fazer não
+-- Escreva uma função que recebe uma lista de números e retorna uma lista com os números que são palíndromos (números que são iguais quando lidos de trás para frente)numerosPalindromos :: [Int] -> [Int]
+numerosPalindromos :: [Int] -> [Int]
+numerosPalindromos [] = []
+numerosPalindromos (h:t)
+    | ehPalindromo h = h : numerosPalindromos t
+    | otherwise = numerosPalindromos t
+    where
+        ehPalindromo :: Int -> Bool
+        ehPalindromo n = show n == reverse (show n)
 
 -- Escreva uma função que recebe uma lista de números e retorna uma lista com os números que são potências de 2
 numerosPotencia2 :: [Int] -> [Int]
@@ -84,12 +90,16 @@ somatorioN 0 = 0
 somatorioN n = n + somatorioN (n-1)
 
 -- Escreva uma função recursiva que inverta ordem dos elementos presentes no vetor.
+inverterList :: [a] -> [a]
 inverterList [] = error "Lista vazia"
 inverterList [x] = [x]
 inverterList (h:t) = inverterList t ++ [h]
 
 -- O máximo divisor comum dos inteiros x e y é o maior inteiro que é divisível por x e y. Escreva uma função recursiva mdc, que retorna o máximo divisor comum de x
 -- e y. O mdc de x e y é definido como segue: se y é igual a 0, então mdc(x,y) é x; caso contrário, mdc(x,y) é mdc (y, x%y), onde % é o operador resto.
+mdc x y
+    | y == 0 = x
+    | otherwise = mdc y (mod x y)
 
 -- Escreva uma função recursiva que determine quantas vezes um item K ocorre em um vetor N.
 quantidadedeK :: (Num a, Eq t) => [t] -> t -> a
@@ -99,6 +109,20 @@ quantidadedeK (h:t) a
     | otherwise = quantidadedeK t a
 
 -- A multiplicação de dois números inteiros pode ser feita através de somas sucessivas. Proponha um algoritmo recursivo Multip_Rec(n1,n2) que calcule a multiplicação de dois inteiros.
-
+multi_rec :: (Eq t1, Eq t2, Num t1, Num t2) => t1 -> t2 -> t1
+multi_rec n1 n2
+    | n1 == 0 || n2 == 0 = 0
+    | otherwise = n1 + multi_rec n1 (n2-1) 
 
 -- Retorne o número do meio de um vetor
+meio :: [Double] -> Double
+meio [a] = a
+meio list = medio_aux (length list) list
+    where
+        medio_aux tam list
+            | mod tam 2 == 0 = (med list (div tam 2 - 1) + med list (div tam 2)) / 2
+            | otherwise = med list (div tam 2)
+
+        med :: [Double] -> Int -> Double
+        med (h:_) 0 = h
+        med (_:t) n = med t (n-1)
