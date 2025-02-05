@@ -109,7 +109,7 @@ invertList (h:t) = invertList t ++ [h]
 contemList :: Eq a => [a] -> a -> Bool
 contemList [] _ = False
 contemList (h:t) v
-    | h == v = True 
+    | h == v = True
     | otherwise = contemList t v
 
 -- retornar penultimo elemento da lista
@@ -132,7 +132,7 @@ media list = media_aux (length list) list
         media_aux tam list
             | mod tam 2 == 0 = (med list (div tam 2 - 1) + med list (div tam 2)) / 2
             | otherwise = med list (div tam 2)
-        
+
         med :: [Double] -> Int -> Double
         med (h:_) 0 = h
         med (_:t) n = med t (n-1)
@@ -143,6 +143,9 @@ retornaTuplas [] = []
 retornaTuplas (h:t) = (h, h * h) : retornaTuplas t
 
 -- Escreva uma função que recebe uma lista de números e retorna a média dos elementos
-mediaList :: (Eq a, Num a) => [a] -> Double
+mediaList :: Fractional a => [a] -> a
 mediaList [] = 0
-mediaList (h:t) = (h + mediaList t) / length (h:t)
+mediaList list =  media_aux list / fromIntegral (length list)
+    where
+        media_aux [] = 0
+        media_aux (h:t) = h + media_aux t
