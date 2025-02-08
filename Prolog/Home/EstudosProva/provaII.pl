@@ -35,10 +35,3 @@ pai(carlos, ana).
 casado(joao, maria).
 casado(pedro, ana).
 solteiro(X) :- \+ casado(X, _).
-
-palindromo:- read(String),
-             eh_palindromo(String),
-             write("Eh palindromo").
-palindromo:- write("Nao eh palindromo")
-
-eh_palindromo (String)
