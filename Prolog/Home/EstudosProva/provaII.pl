@@ -3,9 +3,10 @@ gosta(maria, sushi).
 gosta(pedro, hamburguer).
 
 
-mae(ana).
-mae(maria).
-tia(maria).
+mae(mary).
+mae(any).
+tia(mary).
+tia(any).
 filha_unica(X) :- \+ tia(X).
 
 pertence(X, [X|_]).

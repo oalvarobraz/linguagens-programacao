@@ -103,6 +103,7 @@ duplicarElementos (h:t) = [h,h] ++ duplicarElementos t
 
 -- 17) Implemente a função intercalar :: [a] -> [a] -> [a] que intercala os elementos de duas listas. Se uma lista for maior que a outra, os elementos extras devem ser adicionados ao final.
 intercalar :: [a] -> [a] -> [a]
+intercalar [] [] = []
 intercalar [] list = list
 intercalar list [] = list
 intercalar (h1:t1) (h2:t2) = [h1,h2] ++ intercalar t1 t2

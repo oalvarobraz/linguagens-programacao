@@ -68,3 +68,39 @@ funcao18 _ [] = []
 funcao18 (h1:t1) (h2:t2)
     | h1 == h2 = h1 : funcao18 t1 t2
     | otherwise = funcao18 t1 t2
+
+misterio2 (x:xs) = (x, length xs)
+
+misterio3 xs = [x | x <- xs, mod x 2 == 1]
+
+misterio4 (x:y:xs) = y : x : misterio4 xs
+misterio4 xs = xs
+
+misterio5 [] = 0
+misterio5 (x:xs) = if x `elem` xs then misterio5 xs else 1 + misterio5 xs
+
+misterio6 [] = 0
+misterio6 (x:xs) = x + misterio6 xs
+
+misterio7 xs = [x^2 | x <- xs, even x]
+
+misterio8 [] = []
+misterio8 (x:xs) = misterio8 xs ++ [x * 2]
+
+misterio9 xs = [y | (x,y) <- zip xs (tail xs), y > x]
+
+misterio10 _ [] = []
+misterio10 n (x:xs) = if mod x n == 0 then x : misterio10 n xs else misterio10 n xs
+
+misterio11 xs = [if even x then x `div` 2 else x * 3 + 1 | x <- xs]
+
+misterio12 [] = []
+misterio12 [_] = []
+misterio12 (x:_:xs) = x : misterio12 xs
+
+misterio13 xs = [sum (take i xs) | i <- [1..length xs]]
+
+misterio14 [] = []
+misterio14 (x:xs) = misterio14 [y | y <- xs, y < x] ++ [x] ++ misterio14 [y | y <- xs, y >= x]
+
+misterio15 xs = [(x,y) | x <- xs, y <- xs, x < y]

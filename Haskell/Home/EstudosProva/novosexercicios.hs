@@ -97,6 +97,7 @@ inverterList (h:t) = inverterList t ++ [h]
 
 -- O máximo divisor comum dos inteiros x e y é o maior inteiro que é divisível por x e y. Escreva uma função recursiva mdc, que retorna o máximo divisor comum de x
 -- e y. O mdc de x e y é definido como segue: se y é igual a 0, então mdc(x,y) é x; caso contrário, mdc(x,y) é mdc (y, x%y), onde % é o operador resto.
+mdc :: Integer -> Integer -> Integer
 mdc x y
     | y == 0 = x
     | otherwise = mdc y (mod x y)
@@ -126,3 +127,95 @@ meio list = medio_aux (length list) list
         med :: [Double] -> Int -> Double
         med (h:_) 0 = h
         med (_:t) n = med t (n-1)
+
+-- Defina e implemente uma função triplo :: Num a => a -> a que recebe um número e retorna o seu triplo.
+triplo :: Num a => a -> a
+triplo x = 3 * x
+
+-- Implemente a função ehImpar :: Int -> Bool que retorna True se um número for ímpar e False caso contrário.
+ehImpar :: Int -> Bool
+ehImpar x = mod x 2 == 1
+
+-- Implemente a função potencia :: Integer -> Integer -> Integer que recebe dois números e retorna o primeiro elevado à potência do segundo.
+potencia :: Integer -> Integer -> Integer
+potencia x y = x^y
+
+-- Implemente a função menorElemento :: Ord a => [a] -> a que retorna o menor elemento de uma lista. Não use minimum.
+menorElemento :: Ord a => [a] -> a
+menorElemento [] = error("Lista vazia")
+menorElemento [x] = x
+menorElemento (h:t) = menorAux h t
+    where
+        menorAux x [] = x
+        menorAux x (h:t)
+            | h <= x = menorAux h t
+            | otherwise = menorAux x t
+
+-- Implemente a função inserirOrdenado :: Ord a => a -> [a] -> [a] que insere um elemento em uma lista ordenada mantendo a ordem.
+inserirOrdenado :: Ord a => a -> [a] -> [a]
+inserirOrdenado elem [] = [elem]
+inserirOrdenado elem (h:t)
+    | elem <= h = [elem, h] ++ t
+    | otherwise = [h] ++ inserirOrdenado elem t
+
+-- Defina um tipo Forma que pode ser um Circulo (com um raio) ou um Retangulo (com base e altura). Implemente uma função area :: Forma -> Double que retorna a área da forma.
+data Forma = Circulo Double | Retangulo Double Double  
+area :: Forma -> Double  
+area (Circulo r) = pi * r^2  
+area (Retangulo b h) = b * h  
+
+-- Implemente a função ehPrimo :: Integer -> Bool que verifica se um número é primo.
+ehPrimo :: Integer -> Bool
+ehPrimo n = length [x | x <- [1 .. n], mod n x == 0] == 2
+
+-- Implemente a função interseccao :: Eq a => [a] -> [a] -> [a] que retorna a interseção de duas listas (os elementos comuns entre elas).
+interseccao :: Eq a => [a] -> [a] -> [a]
+interseccao [] _ = []
+interseccao (h:t) l2
+    | elem h l2 = h : interseccao t l2
+    | otherwise = interseccao t l2
+ 
+-- Implemente a função substituir :: Eq a => a -> a -> [a] -> [a] que substitui todas as ocorrências de um elemento por outro em uma lista.
+substituir :: Eq a => a -> a -> [a] -> [a]
+substituir elem subs [] = []
+substituir elem subs (h:t)
+    | h == elem = [subs] ++ substituir elem subs t
+    | otherwise = [h] ++ substituir elem subs t
+
+-- Defina uma função somaQuadrados que recebe uma lista de números e retorna a soma dos quadrados dos elementos da lista.
+somaQuadrados :: Num a => [a] -> a
+somaQuadrados [] = 0
+somaQuadrados (h:t) = h*h + somaQuadrados t
+
+-- Implemente uma função zipAlternado que recebe duas listas e intercala seus elementos de forma alternada. Se uma lista for maior, os elementos extras devem aparecer no final.
+zipAlternado :: [a] -> [a] -> [a]
+zipAlternado [] [] = []
+zipAlternado [] list = list
+zipAlternado list [] = list
+zipAlternado (h1:t1) (h2:t2) = [h1,h2] ++ zipAlternado t1 t2
+
+-- Crie uma função maioresQueMedia que recebe uma lista de números e retorna uma nova lista contendo apenas os números maiores que a média da lista original.
+maioresQueMedia :: (Fractional a, Ord a) => [a] -> [a]
+maioresQueMedia [] = []
+maioresQueMedia xs = [x | x <- xs, x > media]
+  where 
+    media = sum xs / fromIntegral (length xs)
+
+-- Escreva a função rotacionarEsq que recebe uma lista e um número n, e retorna a lista rotacionada n vezes para a esquerda.
+rotacionarEsq :: Int -> [a] -> [a]
+rotacionarEsq _ [] = []
+rotacionarEsq n (h:t)
+    | n == 0 = (h:t)
+    | otherwise = (rotacionarEsq (n-1) (t ++ [h]))
+
+-- Implemente a função ehSublista que recebe duas listas e retorna True se a primeira for uma sublista contínua da segunda.
+ehSublista :: Eq a => [a] -> [a] -> Bool
+ehSublista [] _ = True
+ehSublista _ [] = False
+ehSublista sub@(sh:st) lista@(h:t)
+    | isPrefixOf sub lista = True
+    | otherwise = ehSublista sub t
+  where
+    isPrefixOf [] _ = True
+    isPrefixOf _ [] = False
+    isPrefixOf (x:xs) (y:ys) = x == y && isPrefixOf xs ys
