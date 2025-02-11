@@ -104,3 +104,16 @@ misterio14 [] = []
 misterio14 (x:xs) = misterio14 [y | y <- xs, y < x] ++ [x] ++ misterio14 [y | y <- xs, y >= x]
 
 misterio15 xs = [(x,y) | x <- xs, y <- xs, x < y]
+
+misterio16 [] = 1
+misterio16 (x:xs) = x * misterio16 xs
+
+misterio17 xs = [y | (x, y) <- zip xs [1..], odd x]
+
+misterio18 [] = []
+misterio18 (x:xs) = misterio18 [y | y <- xs, y < x] ++ [x] ++ misterio18 [y | y <- xs, y >= x]
+
+misterio19 xs = [(x, y) | x <- xs, y <- xs, x + y == 10]
+
+misterio20 _ [] = []
+misterio20 n (x:xs) = if mod x n == 0 then misterio20 n xs else x : misterio20 n xs

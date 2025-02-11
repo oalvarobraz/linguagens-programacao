@@ -36,3 +36,7 @@ pai(carlos, ana).
 casado(joao, maria).
 casado(pedro, ana).
 solteiro(X) :- \+ casado(X, _).
+
+inverter([], Invert, Invert).
+inverter([H|T],Invert,Result) :- inverter(T,[H|Invert],Result).
+inverter_lista(List,Result) :- inverter(List,[],Result).
