@@ -6,7 +6,7 @@
 -- primeiro (x, y) = x
 -- maiorQue10 :: (Ord a, Num a) => a -> Bool
 -- maiorQue10 x = x > 10
--- somaLista :: Num a => [a] -> a
+-- somaLista :: (Foldable t, Num a)  => t a -> a
 -- somaLista xs = sum xs
 
 -- 2) Defina e implemente uma função chamada ehPar que recebe um número inteiro e retorna um booleano indicando se ele é par. Escreva a assinatura da função.
