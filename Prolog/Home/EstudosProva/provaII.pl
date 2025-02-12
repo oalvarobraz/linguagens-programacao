@@ -6,7 +6,6 @@ gosta(pedro, hamburguer).
 mae(mary).
 mae(any).
 tia(mary).
-tia(any).
 filha_unica(X) :- \+ tia(X).
 
 pertence(X, [X|_]).

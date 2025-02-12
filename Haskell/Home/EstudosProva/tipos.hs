@@ -1,3 +1,11 @@
+dobro x = x * 2
+
+primeiro (x,y) = x
+
+maiorQue10 x = x > 10
+
+somaLista xs = sum xs
+
 triplo x = x * 3
 
 ultimo xs = last xs

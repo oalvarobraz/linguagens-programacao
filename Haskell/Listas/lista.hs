@@ -111,6 +111,7 @@ intercalar (h1:t1) (h2:t2) = [h1,h2] ++ intercalar t1 t2
 -- 18) Implemente a função removerDuplicatas :: Eq a => [a] -> [a] que remove elementos repetidos consecutivos de uma lista.
 removerDuplicatas :: Eq a => [a] -> [a]
 removerDuplicatas [] = []
+removerDuplicatas [x] = [x]
 removerDuplicatas (h:h2:t)
     | h == h2 = removerDuplicatas (h2:t)
-    | otherwise = [h] ++ removerDuplicatas (h2:t) 
+    | otherwise = h : removerDuplicatas (h2:t) 

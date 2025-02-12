@@ -1,4 +1,3 @@
-
 funcao1 :: [Int] -> [Int]
 funcao1 [] = []
 funcao1 (h:t) = funcao1 [x | x <- t, x < h] ++ [h] ++ funcao1 [x | x <- t, x >= h]
