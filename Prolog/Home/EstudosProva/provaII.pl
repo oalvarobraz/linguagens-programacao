@@ -8,6 +8,10 @@ mae(any).
 tia(mary).
 filha_unica(X) :- \+ tia(X).
 
+animal(gato).
+animal(cachorro).
+animal(passaro).
+
 pertence(X, [X|_]).
 pertence(X, [_|T]) :- pertence(X, T).
 

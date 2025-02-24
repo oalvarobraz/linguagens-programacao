@@ -51,6 +51,17 @@ funcao10 (h:t)
     | h `mod` 2 == 0 = h : funcao10 t
     | otherwise = funcao10 t
 
+funcao11 :: [Int] -> [Int] -> [Int]
+funcao11 [] ys = ys
+funcao11 xs [] = xs
+funcao11 (x:xs) (y:ys)
+    | x < y = x : funcao11 xs (y:ys)
+    | otherwise = y : funcao11 (x:xs) ys
+
+funcao12 :: [Int] -> Int
+funcao12 [] = 0
+funcao12 (h:t) = h - funcao12 t
+
 funcao14 :: [Int] -> Int -> [Int]
 funcao14 [] _ = []
 funcao14 (h:t) x
