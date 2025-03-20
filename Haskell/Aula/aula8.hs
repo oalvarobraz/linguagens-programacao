@@ -69,7 +69,7 @@ half x = if even x
 -- Se for par retorna a metade se não retona Nothing
 -- tomar cuidado com o uso do div e do /
 
--- Ira dar ero se eu fizer half Just 4, e para arrumar isso usamos a mônada
+-- Ira dar erro se eu fizer half Just 4, e para arrumar isso usamos a mônada
 -- utilizamos a função bind >>= para inserir o valor envolto na função
 -- Just 4 >>= half
 
