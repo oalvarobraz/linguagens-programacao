@@ -112,5 +112,10 @@ ignoreFoldl n = foldl (\acc x -> if length acc <= n then acc++[x] else (removeFi
 -- 10. Os seguintes comandos são equivalentes?
 -- (a) fmap (+2) Just 3
 
-
 -- (b) (+2) <*> Just 3
+
+-- De forma geral, os dois comandos não são equivalentes, visto que fmap é um functor e o <*> é um applicative
+-- Além disso:
+-- Em fmap (+2) Just 3, há um erro de sintaxe (falta de parênteses). O correto seria fmap (+2) (Just 3), que retorna Just 5.
+
+-- Em (+2) <*> Just 3, há um erro de tipo, pois <*> exige que a função esteja encapsulada (ex: Just (+2)).

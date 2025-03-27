@@ -116,3 +116,10 @@ elem' :: Eq a => a -> [a] -> Bool
 elem' _ [] = False
 elem' x (y:ys) = if x == y then True else elem' x ys
 
+--  Defina uma função que recebe uma lista de números inteiros e retorna a soma dos elementos usando a função foldl1.
+somaElementos :: [Int] -> Int
+somaElementos = foldl1 (+)
+
+-- Escreva a função map para dobrar todos os elementos de uma lista em Haskell.
+dobrarElementos :: [Int] -> [Int]
+dobrarElementos = map (*2)
