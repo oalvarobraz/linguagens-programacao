@@ -5,7 +5,7 @@
 -- Exemplo: map, filter, foldr, foldl, foldr1, foldl1, etc.
 
 -- 2- Explique o funcionamento da função map. O que acontece ao aplicá-la na lista [1,2,3,4] com a função (2*)?
--- A função map é como se fosse uma função "aplicar" nativa do haskell. Ela recebe funções como argumento função e aplica elas em um determinado vetor
+-- A função map é como se fosse uma função "aplicar" nativa do haskell. Ela recebe funções como argumento função e aplica elas em uma determinada lista
 aplicar :: (Double -> Double) -> [Double] -> [Double]
 aplicar _ [] = []
 aplicar f (n:ns) = f n : aplicar f ns
